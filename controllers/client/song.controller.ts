@@ -7,8 +7,6 @@ import Singer from "../../models/singer.model";
 
 export const list = async (req:Request, res:Response) => {
 
-    console.log(req.params);
-
     const topic = await Topic.findOne({
         slug: req.params.slugTopic,
         status : "active",
@@ -33,5 +31,86 @@ export const list = async (req:Request, res:Response) => {
     res.render("client/pages/songs/list",{
         pageTitle: topic.title,
         songs: songs
+    });
+}
+
+// [GET]/song/detail/:slugSong
+
+
+export const detail = async (req:Request, res:Response) => {
+
+    try{
+        const slugSong : string = req.params.slugSong; // in ra slug song
+
+        const allSong = await Song.find({
+            deleted : false,
+        });
+
+        const allSinger = await Singer.find({
+            deleted : false,
+        });
+
+        const song = await Song.findOne({
+            slug: slugSong,
+            status : "active",
+            deleted : false,
+        });
+
+
+        const singer = await Singer.findOne({
+            _id: song.singerId,
+            status : "active",
+            deleted : false,
+        }).select("fullName");
+
+
+        const topic = await Topic.findOne({
+            _id: song.topicId,
+            deleted: false,
+        });
+
+        res.render("client/pages/songs/detail",{
+            pageTitle: "Chi tiết bài hát",
+            allSong: allSong,
+            allSinger: allSinger,
+            song: song,
+            singer: singer,
+            topic : topic,
+        });
+    } catch (err) {
+        console.log(err);
+        res.json({
+            message: "Lỗi mời bạn xem lại. ",
+        });
+    }
+}
+
+// [PATCH] /songs/like/:typeLike/:idSong
+export const like = async (req: Request, res: Response) => {
+    
+    const idSong: string = req.params.idSong; // Lấy ra slug của song 
+    const typeLike: string = req.params.typeLike; // Lấy ra slug của kiểu like (like or dislike)
+
+    const song = await Song.findOne({
+        _id: idSong,
+        status: "active",
+        deleted: false
+    });
+
+
+    // newLike sẽ tăng lên 1 nếu đúng like , dislike - 1
+    const newLike : number = typeLike == "like" ? song.like + 1 : song.like - 1;
+
+    await Song.updateOne({
+        _id: idSong
+    }, {
+        like: newLike
+    });
+    // like: ["id_user_1", "id_user_2"] // Khi đã có tài khoản thì like nên để 1 list các người dùng
+
+    res.json({
+        code: 200,
+        message: "Thành công!",
+        like: newLike
     });
 }
