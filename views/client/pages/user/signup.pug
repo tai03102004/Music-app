@@ -20,13 +20,13 @@ html(lang="en")
         div.log-in
           form(action="/user/signup", method="POST")
             label Name
-            input(type="text", placeholder="Name")
+            input(type="text", placeholder="Name",required="required")
 
             label Email or username
-            input(type="text", placeholder="Email or username")
+            input(type="text", placeholder="Email or username",required="required")
 
             label Password
-            input(type="password", placeholder="Password")
+            input(type="password", placeholder="Password",required="required")
 
             button(type="submit") Sign up
 

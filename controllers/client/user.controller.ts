@@ -15,21 +15,24 @@ export const signup = async (req:Request, res:Response) => {
 
 export const signupPost = async (req:Request, res:Response) => {
     try {
-        console.log(req.body);
         const name = req.body.name; // Ten
         const username = req.body.username; // Email or username
         const password = req.body.password; // Password
-        // const users = await User.find({
-        //     deleted: false,
-        // })
-        // for (const user of users) {
-        //     if (user.email === username) {
-        //         // req.flash("error", "Tên đăng nhập đã được sử dụng. Vui lòng chọn tên đăng nhập khác.");
-        //         res.redirect("back");
-        //         return;
-        //     }
-        // }
-        res.redirect('/');
+        const users = await User.find({
+            deleted: false,
+        })
+        for (const user of users) {
+            if (user.email === username) {
+                // req.flash("error", "Tên đăng nhập đã được sử dụng. Vui lòng chọn tên đăng nhập khác.");
+                res.redirect("back");
+                return;
+            }
+        }
+        req.body.password = md5(req.body.password);
+        const user = new User(req.body);
+        await user.save();
+        res.redirect("/user/login");
+        
     } catch(err) {
         console.log("Error: " + err);
         res.redirect('back');
