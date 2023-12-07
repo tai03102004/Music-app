@@ -1,12 +1,18 @@
 import mongoose from "mongoose";
+import * as generate from "../helper/generate";
 
 const userSchema = new mongoose.Schema(
 {
     fullName: String,
-    email : String,
+    userName : String,
     password: String,
     token: String,
     status: String,
+    avatar: String,
+    tokenUser: {
+        type : String,
+        default: generate.generateRandomString(31),
+    }, // String random duy nhất để trả về fontend lưu trong Cookie
     deleted: {
         type: Boolean,
         default: false,

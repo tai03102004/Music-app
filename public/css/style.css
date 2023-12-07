@@ -1,4 +1,8 @@
 /* Header */
+.container{
+  display: inline-block;
+  margin-left:250px;
+}
 body {
   background-color: #121212;
   font-family: 'Montserrat', sans-serif;
@@ -137,6 +141,9 @@ body{
   color: rgb(255, 229, 229);
 }
 .card .card-text {
+  color: rgb(255, 229, 229);
+}
+.card .card-detail {
   color: rgb(255, 229, 229);
 }
 

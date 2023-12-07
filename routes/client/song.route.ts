@@ -12,6 +12,8 @@ router.get("/detail/:slugSong", controller.detail);
 
 router.patch("/like/:typeLike/:idSong",controller.like);
 
+router.patch("/listen/:idSong", controller.listen);
+
 router.patch("/favorite/:typeFavorite/:idSong", controller.favorite);
 
 export const songRoutes: Router = router;

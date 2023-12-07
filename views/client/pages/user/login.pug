@@ -1,3 +1,6 @@
+include ../../mixins/alert.pug
+
+
 doctype html
 html(lang="en")
   head
@@ -7,13 +10,20 @@ html(lang="en")
     link(rel="stylesheet", href="/css/login.css")
     link(rel="website icon" ,type = "png" ,href ="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png")
 
+    link(rel="stylesheet", href="/css/alert.css")
+    
   body
       header
         div.logo
           a(href="/")
             img(src="/images/spo-logo.png")
+        div #{user}
       section
         div.main
+
+          +alert-error(5000)
+          +alert-success(5000)
+
           h1 Log in to Spotify
 
           div.account-connect
@@ -30,12 +40,12 @@ html(lang="en")
           hr
 
           div.log-in
-            form(action="/user/signup", method="POST")
+            form(action="/user/login", method="POST")
               label Email or username
-              input(type="text", placeholder="Email or username")
+              input(type="text", placeholder="Email or username",name="userName")
 
               label Password
-              input(type="password", placeholder="Password")
+              input(type="password", placeholder="Password",name="password")
 
               div.switch
                 input(type="checkbox", id="switch", checked)
@@ -51,3 +61,4 @@ html(lang="en")
           div.last
             span Don't you have an account?
             a(href="/user/signup") Sign up for Spotify
+  script(src="/js/alert.js")

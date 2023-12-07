@@ -1,3 +1,4 @@
+include ../../mixins/header2.pug
 head 
     title #{pageTitle}
     link(rel="website icon" ,type = "png" ,href ="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png")
@@ -14,7 +15,7 @@ body
                         span.fa.fa-home
                         span Home
                 li
-                    a(href="#")
+                    a(href="/search/result")
                         span.fa.fa-search
                         span Search
                 li
@@ -29,29 +30,12 @@ body
                         span.fa.fas.fa-plus-square
                         span Create Playlist
                 li
-                    a(href="#")
+                    a(href="/favorite-songs")
                         span.fa.fas.fa-heart
                         span Liked Songs
         
     .main-container
-        .topbar
-            .prev-next-buttons
-                button(type="button" class="fa fas fa-chevron-left")
-                button(type="button" class="fa fas fa-chevron-right")
-            
-            .navbar
-                ul
-                    li
-                        a(href="#") Premium
-                    li
-                        a(href="#") Support
-                    li
-                        a(href="#") Download
-                    li.divider | 
-                    li
-                        a(href="/user/signup") Sign Up
-                button(type="button") 
-                    a(href="/user/login" , style="text-decoration:none") Log In
+        +head()
                     
         .spotify-playlists
             h2 Spotify Playlists
@@ -94,6 +78,7 @@ body
                 h6 Preview of Spotify
                 p Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.
             .button
-                button(type="button") Sign up free
+                button(type="button")
+                    a(href="/user/signup",style="text-decoration:none") Sign up free
     script(src="https://kit.fontawesome.com/23cecef777.js", crossorigin="anonymous")
     link(rel="stylesheet", href="/css/home.css")

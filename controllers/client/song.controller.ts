@@ -71,20 +71,27 @@ export const detail = async (req:Request, res:Response) => {
         }).select("title");
 
         const favoriteSong = await FavoriteSong.findOne({
-            // userId: "",
+            // userId: "",  // Lấy ra id của người yêu thích bài hát
             songId: song.id
         });
         
-        song["isFavoriteSong"] = favoriteSong ? true : false;
+        song["isFavoriteSong"] = favoriteSong ? true : false; // xoá hoặc thêm vào mục yêu thích
+
+        const favoriteAllSong = await FavoriteSong.find({
+            // userId: "",  // Lấy ra id của người yêu thích bài hát
+            deleted: false,
+        }).select("songId");
 
         res.render("client/pages/songs/detail",{
             pageTitle: "Chi tiết bài hát",
+            favoriteSong: favoriteAllSong,
             allSong: allSong,
             allSinger: allSinger,
             song: song,
             singer: singer,
             topic : topic,
         });
+        
     } catch (err) {
         console.log(err);
         res.json({
@@ -123,13 +130,42 @@ export const like = async (req: Request, res: Response) => {
     });
 }
 
+// [PATCH] /songs/listen/:idSong
+export const listen = async (req: Request, res: Response) => {
+    const idSong: string = req.params.idSong; // id Bài hát
+
+    const song = await Song.findOne({
+        _id: idSong
+    });
+    
+    const listen: number = song.listen + 1; // Tăng số lượt nghe lên
+    
+    await Song.updateOne({
+        _id: idSong
+    }, {
+        listen: listen
+    }); // update lại số lượt nghe
+    
+    const songNew = await Song.findOne({
+        _id: idSong
+    });
+    
+    res.json({
+        code: 200,
+        message: "Thành công!",
+        listen: songNew.listen // số lượt nghe
+    });
+} 
+
 // [PATCH] /songs/favorite/:typeFavorite/:idSong
 export const favorite = async (req: Request, res: Response) => {
+    // req.params lấy sau dấu / kiểu của nó
     const idSong: string = req.params.idSong;
     const typeFavorite: string = req.params.typeFavorite;
 
     switch (typeFavorite) {
-        case "favorite":
+        case "favorite": // Nếu yêu thích sẽ lấy bài hát vào và lưu trong dataabse
+        // Lưu ý kiểu gì chỉ lưu 1 lần đầu cho nên kiểm tra có tồn tại chưa
             const existFavoriteSong = await FavoriteSong.findOne({
                 songId: idSong
             });

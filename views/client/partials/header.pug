@@ -1,15 +1,37 @@
-header.header
-  .container
-    .row.align-items-center
-      .col-3
-        .inner-logo
-          a(href="/")
-            img(src="/images/spo-logo.png", alt="Logo")
+body
+    .sidebar(style="width:245px")
+        .logo
+            a(href="/")
+                img(src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png", alt="Logo")
+                
+        .navigation
+            ul
+                li
+                    a(href="/")
+                        span.fa.fa-home
+                        span Home
+                li
+                    a(href="/search/result")
+                        span.fa.fa-search
+                        span Search
+                li
+                    a(href="/topics") 
+                        span.fa.fa-music
+                        span Chủ đề
+                li
+                    a(href="/topics")
+                        span.fa.fas.fa-book
+                        span Your Library
 
-      .col-9
-        .inner-menu
-          ul
-            li
-              a(href="/") Trang chủ
-            li
-              a(href="/topics") Chủ đề
+        .navigation
+            ul
+                li
+                    a(href="#")
+                        span.fa.fas.fa-plus-square
+                        span Create Playlist
+                li
+                    a(href="/favorite-songs")
+                        span.fa.fas.fa-heart
+                        span Liked Songs
+    script(src="https://kit.fontawesome.com/23cecef777.js", crossorigin="anonymous")
+    link(rel="stylesheet", href="/css/home.css")
