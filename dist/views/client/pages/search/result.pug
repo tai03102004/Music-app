@@ -1,0 +1,49 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/header2.pug
+
+block main
+  .main-container
+    +head()
+    .col-10
+      .box-search(style="margin-left:150px")
+        form(
+          id="searchForm"
+          action="/search/result"
+          method="GET"
+        )
+          div(class="form-group d-flex mb-0")
+            input(
+              type="text"
+              placeholder="Nhập từ khóa..."
+              class="form-control"
+              name="keyword"
+              value=keyword
+            )
+            button(
+              type="submit"
+              class="btn btn-primary"
+              onclick="searchSongs()"
+            ) Tìm
+        .inner-suggest
+          .inner-list
+      
+  .container.my-3
+    .row
+      .col-12
+        +box-head(pageTitle)
+    .row
+      each song in songs
+        .col-6.mb-3
+          div(class="song-item")
+            div(class="inner-image")
+              a(href=`/songs/detail/${song.slug}`)
+                img(src=song.avatar)
+            div(class="inner-content")
+              div(class="inner-title")
+                a(href=`/songs/detail/${song.slug}`) #{song.title}
+              div(class="inner-singer") <i class="fa-solid fa-microphone-lines"></i> #{song.infoSinger.fullName}
+              div(class="inner-like") <i class="fa-solid fa-thumbs-up"></i> #{song.like}
+              div(class="inner-time") <i class="fa-regular fa-clock"></i> Hôm nay
+  script(src="/js/search.js")
+  link(rel="stylesheet", href="/css/search.css")

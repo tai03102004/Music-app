@@ -27,7 +27,7 @@ app.use(methodOverride('_method')) // để dùng path trong html
 app.use(express.json()); 
 // Pug
 
-app.set("views","./views");
+app.set("views",`${__dirname}/views`);
 app.set('view engine', 'pug');
 
 // để chỉnh nhiều fone(tinymce) phải nhúng path
@@ -56,7 +56,7 @@ app.use(flash());
 // End Flash
 
 // Public
-app.use(express.static("public"));
+app.use(express.static(`${__dirname}/"public"`));
 
 // Client Routes
 clientRoutes(app);

@@ -1,0 +1,26 @@
+mixin head()
+    .topbar
+        .prev-next-buttons
+            button(type="button" class="fa fas fa-chevron-left")
+            button(type="button" class="fa fas fa-chevron-right")
+        
+        .navbar
+            ul
+                li
+                    a(href="#") Premium
+                li
+                    a(href="#") Support
+                li
+                    a(href="#") Download
+                li.divider | 
+                if (user)
+                    li #{user.avatar}
+                else 
+                    li
+                        a(href="/user/signup") Sign Up
+            if (!user)
+                button(type="button") 
+                    a(href="/user/login" , style="text-decoration:none") Log In
+
+    script(src="https://kit.fontawesome.com/23cecef777.js", crossorigin="anonymous")
+    link(rel="stylesheet", href="/css/home.css")

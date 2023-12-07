@@ -1,0 +1,84 @@
+include ../../mixins/header2.pug
+head 
+    title #{pageTitle}
+    link(rel="website icon" ,type = "png" ,href ="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png")
+body
+    .sidebar
+        .logo
+            a(href="/")
+                img(src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png", alt="Logo")
+    
+        .navigation
+            ul
+                li
+                    a(href="/")
+                        span.fa.fa-home
+                        span Home
+                li
+                    a(href="/search/result")
+                        span.fa.fa-search
+                        span Search
+                li
+                    a(href="/topics")
+                        span.fa.fas.fa-book
+                        span Your Library
+
+        .navigation
+            ul
+                li
+                    a(href="#")
+                        span.fa.fas.fa-plus-square
+                        span Create Playlist
+                li
+                    a(href="/favorite-songs")
+                        span.fa.fas.fa-heart
+                        span Liked Songs
+        
+    .main-container
+        +head()
+                    
+        .spotify-playlists
+            h2 Spotify Playlists
+            .list
+                each playlist in playlists
+                    .item
+                        img(src=playlist.image)
+                        .play
+                            span.fa.fa-play
+                        h4= playlist.title
+                        p= playlist.description
+
+        .spotify-playlists
+            h2 Focus
+            .list
+                each playlist in focusPlaylists
+                    .item
+                        img(src=playlist.image)
+                        .play
+                            span.fa.fa-play
+                        h4= playlist.title
+                        p= playlist.description
+
+        .spotify-playlists
+            h2 Mood
+            .list
+                each playlist in moodPlaylists
+                    .item
+                        img(src=playlist.image)
+                        .play
+                            span.fa.fa-play
+                        h4= playlist.title
+                        p= playlist.description
+
+
+        hr
+
+        .preview
+            .text
+                h6 Preview of Spotify
+                p Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.
+            .button
+                button(type="button")
+                    a(href="/user/signup",style="text-decoration:none") Sign up free
+    script(src="https://kit.fontawesome.com/23cecef777.js", crossorigin="anonymous")
+    link(rel="stylesheet", href="/css/home.css")

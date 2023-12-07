@@ -1,0 +1,69 @@
+include ../../mixins/alert.pug
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Spotify Log In Page
+    link(rel="stylesheet", href="/css/login.css")
+    link(rel="website icon" ,type = "png" ,href ="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png")
+    
+    link(rel="stylesheet", href="/css/alert.css")
+
+  body
+    header
+      div.logo
+        a(href="/")
+          img(src="/images/spo-logo.png")
+    section
+      div.main
+
+        +alert-error(5000)
+        +alert-success(5000)
+
+        h1 Signup to Spotify
+        hr
+
+        div.log-in
+          form(action="/user/signup", method="POST")
+            label Name
+            input(type="text", placeholder="Name",required="required",name="fullName")
+
+            label Email or username
+            input(type="text", placeholder="Email or username",name="userName",required="required")
+
+            label Password
+            input(type="password", placeholder="Password",name="password",required="required")
+
+            div(
+              class="form-group"
+              upload-image
+            )
+              label(for="avatar") Avatar
+              input(
+                type="file"
+                class="form-control-file"
+                id="avatar"
+                name="avatar"
+                accept="image/*"
+                upload-image-input
+              )
+              img(
+                src=""
+                class="image-preview"
+                upload-image-preview
+              )
+
+            button(type="submit") Sign up
+
+        hr
+
+        div.last
+          span Do you have an account?
+          a(href="/user/login") Login for Spotify
+  script(src="/js/alert.js")
+  script(src="/tinymce/tinymce.min.js")
+  script(src="/admin/js/tinymce-config.js")
+
+  
