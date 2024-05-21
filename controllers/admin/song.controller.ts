@@ -40,28 +40,25 @@ export const create = async (req: Request, res: Response) => {
 
 export const createPost = async (req: Request, res: Response) => {
     // Tạo 1 obj để người dùng ko F12 lên và sửa code thành 1 trường khác được
-    // let avatar = "";
-    // let audio = "";
-    console.log(req.body);
+    let avatar = "";
+    let audio = "";
     
-    // if (req.body.avatar) {
-    //     avatar = req.body.avatar[0];
-    // }
-    // if (req.body.audio) {
-    //     audio = req.body.audio[0];
-    // }
+    if (req.body.avatar) {
+        avatar = req.body.avatar[0];
+    }
+    if (req.body.audio) {
+        audio = req.body.audio[0];
+    }
     const dataSong = {
         title : req.body.title , // Tiêu đề ko đc bỏ trống
         topicId: req.body.topicId,
         singerId : req.body.singerId,
         description : req.body.description,
         status : req.body.status,
-        avatar: req.body.avatar,
+        avatar: avatar,
         lyrics : req.body.lyrics,
-        // audio: audio,
+        audio: audio,
     };
-
-    console.log(dataSong);
 
     const song = new Song(dataSong);
     await song.save();
@@ -92,7 +89,7 @@ export const edit = async (req: Request, res: Response) => {
         singers: singers
     });
 };
-  
+
 // [PATCH] /songs/edit/:id
 export const editPatch = async (req: Request, res: Response) => {
     const id = req.params.id;

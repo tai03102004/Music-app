@@ -5,33 +5,36 @@ include ../../mixins/header2.pug
 block main
   .main-container
     +head()
-    .col-10
-      .box-search(style="margin-left:150px")
+    
+    .inner-form
+      .box-search
         form(
           id="searchForm"
           action="/search/result"
           method="GET"
+          class="search-form"
         )
-          div(class="form-group d-flex mb-0")
+          div(class="inner__form-group")
             input(
               type="text"
-              placeholder="Nhập từ khóa..."
-              class="form-control"
+              placeholder="What do you want to listen to?"
+              class="inner__input-group"
               name="keyword"
               value=keyword
             )
             button(
               type="submit"
-              class="btn btn-primary"
+              class="inner__btn-group"
               onclick="searchSongs()"
-            ) Tìm
+            ) 
+              <i class="fa-solid fa-magnifying-glass"></i>
         .inner-suggest
           .inner-list
       
   .container.my-3
-    .row
-      .col-12
-        +box-head(pageTitle)
+    //- .row
+    //-   .col-12
+    //-     +box-head(pageTitle)
     .row
       each song in songs
         .col-6.mb-3

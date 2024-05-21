@@ -24,7 +24,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method')) // để dùng path trong html
 
+// Public
+
+app.use(express.static(`${__dirname}/public`));
+
 app.use(express.json()); 
+
 // Pug
 
 app.set("views",`${__dirname}/views`);
@@ -32,10 +37,12 @@ app.set('view engine', 'pug');
 
 // để chỉnh nhiều fone(tinymce) phải nhúng path
 
+// TinyMCE
 app.use(
-    '/tinymce', 
-    express.static(path.join(__dirname, 'node_modules', 'tinymce'))
+    "/tinymce",
+    express.static(path.join(__dirname, "node_modules", "tinymce"))
 );
+// End TinyMCE
 
 // End pug
 
@@ -55,15 +62,17 @@ app.use(flash());
 
 // End Flash
 
-// Public
-app.use(express.static(`${__dirname}/"public"`));
-
 // Client Routes
 clientRoutes(app);
 
 // Admin Routes
 adminRoutes(app);
 
+app.get("*", (req, res) => {
+    res.render(("client/pages/errors/404.pug"),{
+        pageTitle: "404 Not Found",
+    })
+})
 
 app.listen (port ,()  => {
     console.log(`App listening on port ${port}`);

@@ -1,6 +1,5 @@
 // Show Alert
 const showAlert = document.querySelector("[show-alert]");
-console.log(showAlert);
 if (showAlert) {
     const time = parseInt(showAlert.getAttribute("data-time")) || 3000;
     const closeAlert = showAlert.querySelector("[close-alert]");
@@ -23,3 +22,26 @@ if (showAlert) {
 }
 
 // End Show Alert
+
+
+// Alert Premium
+
+const container = document.querySelector('.ot-sdk-container');
+const buttonAlert = document.querySelector('#onetrust-close-btn-container');
+if (buttonAlert){
+
+  if (buttonAlert && container) {
+      buttonAlert.addEventListener("click", () => {
+          container.classList.add('ot-sdk-container-hidden');
+      });
+  }
+
+}
+
+if (container) {
+  container.addEventListener("click", () => {
+    container.classList.toggle('ot-sdk-container-border');
+  });
+}
+
+// End Alert Premium

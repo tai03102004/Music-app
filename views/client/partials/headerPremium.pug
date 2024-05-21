@@ -1,0 +1,39 @@
+include ../mixins/menu.pug
+
+.main-container
+    .topbar     
+        .topbarLogo(style="margin-left:80px")
+            ul  
+                li 
+                    .logo
+                        a(href="/")
+                            img(src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png", alt="Logo",width="120px")
+        .topbar1(style="margin-right:150px")      
+            ul 
+                if (user)
+                    li
+                        a(href="/user/premium") Premium
+                li 
+                    a(href="#") Support
+                li
+                    a(href="#") Download
+                li.divider | 
+                if (user)
+                    li.divider(style="margin-top:-10px")
+                        img(
+                            src=user.avatar
+                            alt="User Avatar"
+                            width="35px"
+                            height="auto"
+                            class="rounded-image"
+                            id = "menuButton"
+                        ) 
+                        +menu()
+
+                else 
+                    li
+                        a(href="/user/signup") Sign Up
+                    li
+                        a(href="/user/login" , style="text-decoration:none") Log In
+    link(rel="stylesheet", href="/css/menu.css")
+    script(src="/js/profile.js")

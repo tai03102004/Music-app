@@ -13,14 +13,14 @@ router.get("/", controller.index);
 router.get("/create", controller.create);
 
 router.post("/create",
-    // upload.fields([
-    //     { name: "avatar", maxCount: 1 },
-    //     { name: "audio", maxCount: 1 },
-    // ]),
+    upload.fields([
+        { name: "avatar", maxCount: 1 },
+        { name: "audio", maxCount: 1 },
+    ]),
 
-    upload.single("avatar"),
+    // upload.single("avatar"),
     
-    uploadCloud.uploadSingle,
+    uploadCloud.uploadFields,
     controller.createPost
 );
 

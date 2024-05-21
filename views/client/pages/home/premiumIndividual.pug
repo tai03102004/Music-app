@@ -1,0 +1,139 @@
+head 
+    title #{pageTitle}
+    link(rel="stylesheet", href="/css/premiumStudent.css")
+    link(rel="website icon" ,type = "png" ,href ="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png")
+body 
+    .main-container
+        .topbar     
+            .topbarLogo(style="margin-left:80px")
+                ul  
+                    li 
+                        .logo
+                            a(href="/")
+                                img(src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png", alt="Logo",width="120px")
+            .topbar1(style="margin-right:150px")      
+                ul 
+                    if (user)
+                        li
+                            a(href="/user/premium") Premium
+                    li 
+                        a(href="#") Support
+                    li
+                        a(href="#") Download
+                    li.divider | 
+                    if (user)
+                        li.divider(style="margin-top:-10px")
+                            img(
+                                src=user.avatar
+                                alt="User Avatar"
+                                width="35px"
+                                height="auto"
+                                class="rounded-image"
+                                id = "menuButton"
+                            ) 
+                    else 
+                        li
+                            a(href="/user/signup") Sign Up
+                        li
+                            a(href="/user/login" , style="text-decoration:none") Log In
+    div(class="middlebar",style=" background-color: #f58c8c;")
+        header
+            div(class="container")
+            h1(class="heading")
+                font(style='vertical-align: inherit;')
+                font(style='vertical-align: inherit;') Cá nhân cao cấp
+            div(class="container")
+                h2(class="heading")
+                font(style='vertical-align: inherit;')
+                    font(style='vertical-align: inherit;font-size:1.2em') Nghe nhạc không có quảng cáo không giới hạn và hạn thời gian.
+                    font(style='vertical-align: inherit;font-size:1.2em') Chỉ 6.99$/tháng.
+                    font(style='vertical-align: inherit;font-size:1.2em') Hãy bắt cứ lúc nào.
+            div(class="container")
+                a
+                    span(class="spaced-span")
+                        <span>
+                            button(class="spaced-button") Lấy tiền thưởng
+                        </span>
+        footer
+            p(class="footer-text")
+                font(style='vertical-align: inherit;')
+                    font(style='vertical-align: inherit;') Chỉ dành cho sinh viên tại một tổ chức giáo dục đại học được công nhận.
+                a(href='https://www.spotify.com/legal/student-discount-terms-and-conditions')
+                    font(style='vertical-align: inherit;')
+                        font(style='vertical-align: inherit;color:#000;text-decoration: underline;font-weight:700') Điều khoản và Điều kiện
+                font(style='vertical-align: inherit;')
+                    font(style='vertical-align: inherit;margin-left:2px') áp dụng.
+    div
+        section(class="container")
+            div(class="header")
+                h2 Nhạc nền cho việc học của bạn
+            ul(class="confit")
+                li(class="sc-b96d95c2-6 fkzDVJ")
+                    img(src="/images/anh1.png" width="150px")
+                    p.spaced-textb Nghe nhạc không quảng cáo
+                    p.spaced-text Học hết sức. Chơi hết mình.
+                li  
+                    img(src="/images/anh2.png" width="150px")
+                    p.spaced-textb Nghe nhạc không cần mạng
+                    p.spaced-text Không còn phải lo lắng về dữ liệu nữa, dù bạn ở bất kỳ đâu.
+                li
+                    img(src="/images/anh3.png" width="150px")
+                    p.spaced-textb Âm nhạc cho mọi khoảnh khắc
+                    p.spaced-text Hàng triệu bài hát và danh sách phát tuyệt hay.
+                li
+                    img(src="/images/anh4.png" width="150px")
+                    p.spaced-textb Dễ dàng và thuận tiện
+                    p.spaced-text Premium mang tới chất lượng âm thanh thậm chí còn tốt hơn nữa tới từng bài hát.
+    div
+        section.faq-section
+            article(style='color: #000000;')
+                header 
+                    h2(class="a") Bạn có câu hỏi?
+                    h3(class="b") Chúng tôi sẽ giải đáp cho bạn
+                    ul(class="info")
+                        li(class="abc") Tôi có đủ điều kiện dùng gói này không?
+                            <i class="fa-solid fa-chevron-down" id="down"></i>
+                            <i class="fa-solid fa-chevron-up" id="up"></i>
+                            p(class="additional-info" ) Bạn sẽ đủ điều kiện nếu là sinh viên của một trường cao đẳng hay đại học được công nhận và trên 18 tuổi. Bạn có thể sử dụng gói Premium Student trong tối đa 4 năm.
+                        li(class="abc") Spotify xác minh tôi là sinh viên bằng cách nào?
+                            <i class="fa-solid fa-chevron-down" id="down"></i>
+                            <i class="fa-solid fa-chevron-up" id="up"></i>
+                            p(class="additional-info" ) Chúng tôi xác minh trạng thái đăng ký của bạn thông qua dịch vụ của bên thứ ba tên là SheerID. Tìm hiểu thêm.
+                        li(class="abc") Điều gì xảy ra với tài khoản của tôi khi tôi tốt nghiệp hay rời trường?
+                            <i class="fa-solid fa-chevron-down" id="down"></i>
+                            <i class="fa-solid fa-chevron-up" id="up"></i>
+                            p(class="additional-info" ) Bạn sẽ tiếp tục được sử dụng gói Premium Student trong tối đa 12 tháng kể từ ngày bạn đăng ký hoặc xác minh lại lần gần đây nhất, khi gói này vẫn còn hiệu lực. Nếu không còn là sinh viên vào cuối giai đoạn đó, bạn sẽ không còn đủ điều kiện dùng Premium Student. Gói đăng ký của bạn sẽ tự động chuyển sang gói Premium Individual với mức giá 59,000₫/tháng.
+                        li(class="abc") Sau đó, tôi sẽ phải trả phí bao nhiêu và khi nào?
+                            <i class="fa-solid fa-chevron-down" id="down"></i>
+                            <i class="fa-solid fa-chevron-up" id="up"></i>
+                            p(class="additional-info" ) Bạn sẽ bị tính phí 29,500₫/tháng. Nếu có thay đổi về giá trong tương lai, chúng tôi sẽ thông báo trước cho bạn. Bạn có thể hủy bất cứ lúc nào trên trang Tài khoản Spotify.
+    div(class="middlebar",style=" background-color: #f58c8c")
+        header
+            div(class="container")
+            h1(class="heading")
+                font(style='vertical-align: inherit;')
+                font(style='vertical-align: inherit;') Cá nhân cao cấp
+            div(class="container")
+                h2(class="heading")
+                font(style='vertical-align: inherit;')
+                    font(style='vertical-align: inherit;font-size:1.2em') Nghe nhạc không có quảng cáo không giới hạn và hạn thời gian.
+                    font(style='vertical-align: inherit;font-size:1.2em') Chỉ 6.99$/tháng.
+                    font(style='vertical-align: inherit;font-size:1.2em') Hãy bắt cứ lúc nào.
+            div(class="container")
+                a
+                    span(class="spaced-span")
+                        <span>
+                            button(class="spaced-button") Lấy tiền thưởng
+                        </span>
+        footer
+            p(class="footer-text")
+                font(style='vertical-align: inherit;')
+                    font(style='vertical-align: inherit;') Chỉ dành cho sinh viên tại một tổ chức giáo dục đại học được công nhận.
+                a(href='https://www.spotify.com/legal/student-discount-terms-and-conditions')
+                    font(style='vertical-align: inherit;')
+                        font(style='vertical-align: inherit;color:#000;text-decoration: underline;') Điều khoản và Điều kiện
+                font(style='vertical-align: inherit;')
+                    font(style='vertical-align: inherit;margin-left:2px') áp dụng.
+    
+    include ../../partials/footerSpotify.pug
+    script(src="/js/premium.js")

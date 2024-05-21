@@ -2,6 +2,7 @@ import { Request,Response } from "express";
 import md5 from "md5";
 import {generateRandomString} from "../../helper/generate";
 import User from "../../models/users.model";
+import StudentPremium from "../../models/Student-Premium.model";
 
 // [GET]/user/signup
 
@@ -33,7 +34,7 @@ export const signupPost = async (req:Request, res:Response) => {
             password : req.body.password, // Password
             avatar: req.body.avatar
         };
-        console.log(dataUser);
+
         const user = new User(dataUser);
         await user.save();
         res.redirect("/user/login");
@@ -96,3 +97,38 @@ export const loginPost = async (req:Request, res:Response) => {
         res.redirect('back');
     }
 }
+
+export const logout = async (req:Request, res:Response) => {
+    res.clearCookie("tokenUser");
+    res.redirect('/user/login');
+}
+
+export const premium = async (req:Request, res:Response) => {
+
+    res.render("client/pages/home/premium.pug",{
+        pageTitle: "Premium",
+    });
+}
+
+export const premiumIndividual = async (req:Request, res:Response) => {
+
+    res.render("client/pages/home/premiumIndividual.pug",{
+        pageTitle: "Premium Individual",
+    });
+
+}
+
+export const premiumStudent = async (req:Request, res:Response) => {
+
+    res.render("client/pages/home/premiumStudent.pug",{
+        pageTitle: "Premium Student",
+    });
+}
+
+export const premiumStudentVerification = async (req:Request, res:Response) => {
+
+    res.render("client/pages/home/premiumStudentVerification.pug",{
+        pageTitle: "Spotify",
+    });
+}
+

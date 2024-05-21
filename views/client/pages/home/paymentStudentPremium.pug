@@ -1,0 +1,34 @@
+doctype html
+head
+  title ECOMMERCE WEBSITE DOWNLOAD
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  link(rel="stylesheet" href="../../../css/payment.css")
+
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js')
+section
+  h1 ECOMMERCE WEBSITE CODE
+  .form
+    .flex.m20
+      label Full Name*
+      input.m10.name(type='text' name='name' placeholder='Full Name')
+    .flex.m20
+      label Whatsapp Number(With ISD)*
+      input.m10.number(type='text' name='phone' placeholder='Ex- +919064973840')
+    .flex.m20
+      label Email*
+      input.m10.email(type='email' name='email' placeholder='Email')
+    .flex.m20
+      button.generate_qr NEXT
+  .qr_code.m20
+    p
+      | Scan the QR Code with any UPI App and pay the amount then download the source code.
+    center
+      img.get_qr.m10(src='../../../images/QR-Code.png' alt='QR CODE')
+    center
+      img.im.m10(src='../../../images/MB.png')
+    .flex.m20
+      label UTR/REFERENCE/TRANSACTION ID**
+      input.m10.id(type='number' name='email' placeholder='UTR/REFERENCE/TRANSACTION ID**')
+    button.download_now.m20 Download Now
+  script(src='../../../js/payment.js')

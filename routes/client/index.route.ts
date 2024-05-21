@@ -9,9 +9,19 @@ import { requireAuth } from "../../middlewares/client/auth.middlewares";
 
 import { searchRoutes } from "./search.route";
 
+import { paymentRoutes } from "./payment.route";
+
+import {userMiddleware} from "../../middlewares/client/user.middlewares";
+
+
+// upload ảnh lên cloudy
+import { uploadRoutes } from "./upload.route";
+
 const clientRoutes = (app: Express): void => {
     
     app.use(requireAuth);
+
+    // app.use(userMiddleware);
 
     // Home
     app.use(`/`, homeRoutes);
@@ -24,8 +34,14 @@ const clientRoutes = (app: Express): void => {
 
     app.use(`/search`, searchRoutes);
 
+    // upload ảnh từ tiny-mce lên cloudinary
+    app.use(`/upload`, uploadRoutes);
+
     // Đăng ký, Đăng nhập
     app.use(`/user`, userRoutes); 
+
+    // Thanh toán
+    app.use(`/payment`, paymentRoutes);
 
 };
 

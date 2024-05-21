@@ -1,0 +1,40 @@
+head 
+  title #{pageTitle}
+  link(rel="website icon" ,type = "png" ,href ="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png")
+main.main.flow
+  h1.main__heading Pricing
+  .main__cards.cards
+    .cards__inner
+      .cards__card.card
+        h2.card__heading1 Free
+        p.card__price $0/month
+        ul.card__bullets.flow(role='list')
+          li Listen to music with ads
+          li Basic sound quality
+          li Play music in random mode
+          li Listen online only
+        a.card__cta.cta(href='/') Get Started
+      .cards__card.card
+          h2.card__heading2 Premium Individual
+          p.card__price $6.99/month
+          ul.card__bullets.flow(role='list')
+            li Listen to music without ads
+            li Download to listen without music
+            li Outstanding sound quality
+            li Listen to music without internet connection
+            li Cancel anytime
+          a.card__cta.cta(href='/user/premium/individual') Upgrade to Premium
+      .cards__card.card
+          h2.card__heading3 Premium Student
+          p.card__price $5.99/month
+          ul.card__bullets.flow(role='list')
+            li Listen to music without ads
+            li Download to listen without music
+            li Outstanding sound quality
+            li Cancel anytime
+          a.card__cta.cta(href='/user/premium/student') Go Premium Plus
+      .overlay.cards__inner
+
+    .overlay.cards__inner
+  link(href="/css/premium.css" rel="stylesheet")
+  script(src="/js/premium.js")

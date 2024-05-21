@@ -12,7 +12,7 @@ html(lang="en")
 
     link(rel="stylesheet", href="/css/alert.css")
     
-  body
+  body(onload="getCookieData()")
       header
         div.logo
           a(href="/")
@@ -42,13 +42,13 @@ html(lang="en")
           div.log-in
             form(action="/user/login", method="POST")
               label Email or username
-              input(type="text", placeholder="Email or username",name="userName")
+              input(type="text",id="username", placeholder="Email or username",name="userName")
 
               label Password
-              input(type="password", placeholder="Password",name="password")
+              input(type="password",id="password", placeholder="Password",name="password")
 
               div.switch
-                input(type="checkbox", id="switch", checked)
+                input(type="checkbox", id="switch",name="rememberMe",onclick="setcookie()")
                 label(for="switch")
                 span Remember me
 
@@ -62,3 +62,6 @@ html(lang="en")
             span Don't you have an account?
             a(href="/user/signup") Sign up for Spotify
   script(src="/js/alert.js")
+  script(src="/js/remeberMe.js")
+  script(src="https://cdn.jsdelivr.net/npm/bcryptjs/dist/bcrypt.min.js")
+

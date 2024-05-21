@@ -1,0 +1,55 @@
+#menu {
+    display: none;
+    position: absolute;
+    background-color: #565656;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    list-style: none;
+    margin-top:3.5%;
+    right:20px;
+    border-radius : 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#menu li {
+    width: 88%;
+    padding: 10 60 10 10;
+    cursor: pointer;
+    color:white;
+    background-color: #565656;
+    font-size: 0.9em;
+    font-weight : 400;
+}
+
+#menu li:last-child {
+    border-bottom: none;
+}
+
+#menu li:last-child a{
+    font-weight : 700;
+    font-size: 1.0em;
+    color : rgb(246, 228, 228);
+}
+
+#menu .inner-account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menu .inner-general  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menu .inner-general i {
+    margin-right: 20px;
+    color : white;
+}
+.inner-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

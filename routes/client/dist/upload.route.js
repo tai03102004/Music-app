@@ -1,0 +1,11 @@
+"use strict";
+exports.__esModule = true;
+exports.uploadRoutes = void 0;
+var express_1 = require("express");
+var multer_1 = require("multer");
+var router = express_1.Router();
+var controller = require("../../controllers/client/upload.controller");
+var uploadCloud = require("../../middlewares/admin/uploadCloud.middlewares");
+var upload = multer_1["default"]();
+router.post("/", upload.single("file"), uploadCloud.uploadSingle, controller.index);
+exports.uploadRoutes = router;

@@ -1,0 +1,52 @@
+head 
+    title #{pageTitle}
+    link(rel="stylesheet", href="/css/premiumStudent.css")
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css")
+    link(rel="website icon" ,type = "png" ,href ="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png")
+body 
+    include ../../partials/headerPremium.pug
+    div(class="middlebar-verfication")
+        header
+            div(class="container-verfication")
+            h1(class="heading-verfication")
+                font(style='vertical-align: inherit;')
+                font(style='vertical-align: inherit;') Xác minh rằng bạn là sinh viên
+            div(class="container-verfication")
+                h2(class="heading-verfication")
+                font(style='vertical-align: inherit;')
+                    p(class="p-verfication") Trước tiên, chúng tôi cần xác minh rằng bạn đang theo học tại một trường đại học hoặc cao đẳng được công nhận.
+                    p(class="p-verfication") công nhận.
+                    p(class="p-verfication") Bạn không chắc mình có đủ điều kiện hay không? 
+                        a(href="https://support.sheerid.com/vi/63fd266996552d469aea40e1/help-center/student" style="text-decoration:none;font-weight:600") Tìm hiểu thêm.
+
+    section(class="section1-verfication")
+        section(class="section2-verfication")
+            span(class="span-verfication") Xác minh sinh viên qua
+            div(class="VerificationBySheerIdCard__SheerIdLogoWrapper")
+                svg(class="sheerIdCard-verfication")
+                    g(fill-rule='nonzero', fill='none')
+                        img(src="/images/SheerID.webp" height="50" width="100")
+                        
+        section.ButtonGroup-sc-3dd1b7ad-0.bMTILn
+            if (user)
+                a.Button-sc-qlcn5g-0.dvIHEq(href=`/payment`, class='buttonPrimary')
+                    span.ButtonInner Tiếp
+            else 
+                a.Button-sc-qlcn5g-0.dvIHEq(href=`/user/login`, class='buttonPrimary')
+                    span.ButtonInner Tiếp
+    .ot-sdk-container
+        .ot-sdk-row
+            #onetrust-group-container.ot-sdk-eight.ot-sdk-columns.ot-sdk-eleven
+                .banner_logo
+                #onetrust-policy
+                    #onetrust-policy-text
+                    | Chúng tôi và
+                    a(href='https://www.spotify.com/legal/cookies-vendor-list/' style="color:black ; font-weight: 600")  của đối tác của chúng tôi 
+                    |  sử dụng cookie cho mục đích cá nhân hóa trải nghiệm của bạn, hiển thị cho bạn quảng cáo dựa trên sở thích và đo lường và phân tích. Với việc sử dụng trang web và dịch vụ của chúng tôi, bạn đồng ý với việc chúng tôi sử dụng cookie như mô tả trong 
+                    a(href='https://www.spotify.com/legal/cookies-policy/' style="color:black;font-weight: 600") Chính sách cookie.
+            #onetrust-close-btn-container
+                button(class="onetrust-close-btn-handler")
+                    <i class="fa-solid fa-x"></i>
+
+    script(src="/js/alert.js")

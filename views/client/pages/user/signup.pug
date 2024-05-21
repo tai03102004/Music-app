@@ -26,7 +26,7 @@ html(lang="en")
         hr
 
         div.log-in
-          form(action="/user/signup", method="POST")
+          form(action="/user/signup", method="POST",enctype="multipart/form-data")
             label Name
             input(type="text", placeholder="Name",required="required",name="fullName")
 
@@ -62,8 +62,9 @@ html(lang="en")
         div.last
           span Do you have an account?
           a(href="/user/login") Login for Spotify
-  script(src="/js/alert.js")
-  script(src="/tinymce/tinymce.min.js")
-  script(src="/admin/js/tinymce-config.js")
+          
+    script(src="/js/alert.js")
+    script(src="/tinymce/tinymce.min.js")
+    script(src="/js/tinymce-config.js")
 
   
